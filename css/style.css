@@ -1,0 +1,304 @@
+/*----------------- CSS Reset -----------------*/
+html {
+    font-family: sans-serif, Arial;
+    color: black;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: white;
+    min-width: 400px;
+}
+
+/*----------------- CSS Headers -----------------*/
+p, a {
+    font-size: 1.2em;
+    line-height: 1.44em;
+}
+
+h4 {
+    font-size: 1.44em;
+}
+
+h3 {
+    font-size: 1.728em;
+}
+
+h2 {
+    font-size: 2.074em;
+}
+
+h1 {
+    font-size: 2.488em;
+}
+
+h3, h2 {
+    font-weight: 900;
+}
+
+h1 {
+    font-weight: 900;
+}
+
+/*----------------- Typography -----------------*/
+h1,h2,h3 {
+    text-align: center;
+}
+
+p {
+    padding: 1em 0;
+    text-align: justify;
+}
+
+img {
+    display: block;
+    border: 0;
+    width: 100%;
+    height: auto;
+}
+
+/*----------------- Header section -----------------*/
+
+/*----------------- Logo section -----------------*/
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo .img_background {
+    z-index: 3;
+}
+
+/*----------------- Navigation section -----------------*/
+
+.nav {
+    text-align: center;
+    background: black;
+    width: 100%;
+    position: fixed;
+    z-index: 9;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.top_menu > li {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+}
+
+.nav a {
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    width: 190%;
+    z-index: 10;
+}
+
+.nav ul li:hover .submenu {
+    color: darkorange;
+    background-color: #2f2f2f;
+    display: block;
+}
+
+.top_menu > li:hover > a,
+.submenu li:hover a {
+    color: darkorange;
+}
+
+.social_fly a {
+    color: black;
+    text-shadow: white 1px 1px 0, white -1px -1px 0,
+    white -1px 1px 0, white 1px -1px 0;
+}
+
+.social_fly a:hover {
+    color: black;
+    background: orange;
+}
+
+@media screen and (max-width: 970px) {
+    .social_fly ul {
+        display: none;
+    }
+}
+
+.nav .social_fly ul {
+    position: absolute;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.social_fly ul {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*----------------- Main section -----------------*/
+
+.main img {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 1px solid darkorange;
+}
+
+.main p {
+    text-align: left;
+}
+
+/*----------------- Karta section -----------------*/
+
+.karts {
+    padding: 2em 1em 2em;
+}
+
+.karta {
+    padding: 2em;
+}
+
+.karts ul {
+    margin: 0;
+    padding: 0;
+}
+
+.karts li {
+    margin-bottom: 1em;
+    background: #f1f1f1;
+    list-style: none;
+}
+
+.karts h4, p {
+    text-align: center;
+}
+
+.karts img {
+    border: 1px solid darkorange;
+}
+
+/*----------------- Twins section -----------------*/
+
+.twin h2, a {
+    text-align: center;
+}
+
+.twin p {
+    text-align: center;
+}
+
+/*----------------- Button section -----------------*/
+.button {
+    text-decoration: none;
+    color: black;
+    margin: 1em auto 1em;
+    padding: 1em auto 1em;
+    border: 3px solid darkorange;
+}
+
+.main a:hover {
+    color: white;
+    background: black;
+}
+
+.twins a:hover {
+    color: white;
+    background: black;
+}
+
+/*----------------- Footer section -----------------*/
+.footer {
+    padding: 2em;
+    background: hsl(0, 0%, 10%);
+    color: white;
+    text-align: center;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a:hover,
+.footer a:focus {
+    border-bottom: 1px solid orange;
+    color: darkorange;
+}
+
+/*----------------- If no grid support, limit width to 50em and center align -------------*/
+@supports not (display: grid) {
+    .grid {
+        max-width: 50em;
+        margin: 0 auto;
+    }
+}
+
+/*----------------- Use flex to create a three-bucket layout -----------------*/
+
+@media screen and (min-width: 700px) {
+    @supports (display: flex) {
+
+        .karts ul {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .karts li {
+            width: 31%;
+        }
+    }
+}
+
+/*----------------- CSS Grid layout for wider screens, when browser supports grid: ----*/
+
+@media screen and (min-width: 600px) {
+    /* Layout with CSS Grid */
+    @supports (display: grid) {
+
+        /* Four-column layout. Two center columns have a total max width of 50em: */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        /* Center items by placing them in the two center columns: */
+        .header,
+        .nav,
+        .more-content,
+        .main-content,
+        .karts ul {
+            grid-column: 2/4;
+        }
+
+        .logo .img_background {
+            grid-column: 1/5;
+        }
+
+        .logo a, p,
+        .main-text img, p,
+        .more a,
+        .twins h2, a {
+            grid-column: 2/4;
+        }
+
+        /* Use automatic grid placement + span to let each item span two columns:*/
+        .twin,
+        .footer aside {
+            grid-column: span 2;
+        }
+    }
+}
+
